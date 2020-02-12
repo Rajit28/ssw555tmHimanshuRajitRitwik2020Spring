@@ -1,7 +1,7 @@
 level=tag=argument = "Not Available"
 set_of_valid_tags = { '0' :['HEAD','NOTE','TRLR'], '1':['BIRT','CHIL','DIV','HUSB','WIFE','MARR','NAME','SEX','DEAT','FAMC','FAMS'], '2' :['DATE']}
 try:
-    with open('Ritvik_tiwari_10455128.ged') as file_variable:
+    with open('ssw555tmHimanshuRajitRitwik2020Spring.ged') as file_variable:
         for line in file_variable:
             line=line.strip()
             print("-->{}".format(line))
