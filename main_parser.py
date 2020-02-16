@@ -84,9 +84,17 @@ def prettyOutput(listIndividuals, listFamilies):
     ind = PrettyTable(["ID","Name","Gender","Birthday","Age","Alive","Death","Child","Spouse"])
     fam = PrettyTable(["ID","Married","Divorce","Husband ID","Husband Name","Wife ID","Wife Name","Children"])
     for p in listIndividuals:
-        ind.add_row([p.id, p.name, p.gender, p.birthday, str(p.age), str(p.alive), p.death, p.children, p.spouse])
+        if p.children == 'NA':
+            children = 'NA'
+        else:
+            children = '{'+str(p.children).strip('[]')+'}'
+        ind.add_row([p.id, p.name, p.gender, p.birthday, str(p.age), str(p.alive), p.death, children, p.spouse])
     for p in listFamilies:
-        fam.add_row([p.id, p.married, p.divorced, p.husbandId, p.husbandName, p.wifeId, p.wifeName, p.children])
+        if len(p.children) == 0:
+            children = 'NA'
+        else:
+            children = '{'+str(p.children).strip('[]')+'}'
+        fam.add_row([p.id, p.married, p.divorced, p.husbandId, p.husbandName, p.wifeId, p.wifeName, children])
 
     print("Individuals")
     print(ind)
@@ -136,14 +144,23 @@ if __name__ == "__main__":
                         valid_tags ='Y'
                         if currentTag == 'INDI':
                             if birth == True and tag == 'DATE':
-                                birthday = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ line_arguments[2] 
+                                if int(line_arguments[2]) < 10:
+                                    day = '0'+ line_arguments[2]
+                                else:
+                                    day = line_arguments[2]
+
+                                birthday = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
                                 p = findPerson(currentId, list_of_people)
                                 p.addBirthday(birthday)
                                 age = int(line_arguments[4])
                                 p.addAge(2020-age)
                                 birth = False
                             elif death == True and tag == 'DATE':
-                                deathday =  line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ line_arguments[2]
+                                if int(line_arguments[2]) < 10:
+                                    day = '0'+ line_arguments[2]
+                                else:
+                                    day = line_arguments[2]
+                                deathday =  line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
                                 p = findPerson(currentId, list_of_people)
                                 p.addDeath(deathday)
                                 p.addAlive(False)
@@ -165,13 +182,21 @@ if __name__ == "__main__":
                                 continue;
                         elif currentTag == 'FAM':
                             if married == True and tag == 'DATE':
+                                if int(line_arguments[2]) < 10:
+                                    day = '0'+ line_arguments[2]
+                                else:
+                                    day = line_arguments[2]
                                 fam = findFam(currentId, list_of_fams)
-                                marriedDate = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ line_arguments[2]
+                                marriedDate = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
                                 fam.addMarried(marriedDate)
                                 married = False
                             elif divorced == True and tag == 'DATE':
+                                if int(line_arguments[2]) < 10:
+                                    day = '0'+ line_arguments[2]
+                                else:
+                                    day = line_arguments[2]
                                 fam = findFam(currentId, list_of_fams)
-                                divDate = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ line_arguments[2]
+                                divDate = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
                                 fam.addDivorced(divDate)
                                 divorced = False
                             elif tag == 'MARR':
