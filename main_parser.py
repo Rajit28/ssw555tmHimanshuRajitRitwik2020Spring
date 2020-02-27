@@ -1,6 +1,7 @@
 #   CS-555
 #   Parser for Gedcom files
 from prettytable import PrettyTable
+from datetime import date
 
 class individuals(object):
 
@@ -73,11 +74,10 @@ def findFam(id_, listFam):
     return found
 
 def convertMonth(month):
-    allMonth = {'JAN':'01', 'FEB':'02', 'MAR':'03',
-                'APR':'04', 'MAY':'05', 'JUN':'06',
-                'JUL':'07', 'AUG':'08', 'SEP':'09',
-                'OCT':'10', 'NOV':'11', 'DEC':'12'}
-
+    allMonth = {'JAN':1, 'FEB':2, 'MAR':3,
+                'APR':4, 'MAY':5, 'JUN':6,
+                'JUL':7, 'AUG':8, 'SEP':9,
+                'OCT':10, 'NOV':11, 'DEC':12}
     return allMonth[month]
 
 def prettyOutput(listIndividuals, listFamilies):
@@ -119,7 +119,6 @@ if __name__ == "__main__":
 
             for line in file_variable:
                 line=line.strip()
-                #print("-->{}".format(line))
                 line_arguments = line.split(" ")
                 length_of_line_arguments = len(line_arguments)
                 if length_of_line_arguments == 3 and line_arguments[0] == '0' and line_arguments[2] in {'INDI','FAM'}:
@@ -144,29 +143,25 @@ if __name__ == "__main__":
                         valid_tags ='Y'
                         if currentTag == 'INDI':
                             if birth == True and tag == 'DATE':
-                                if int(line_arguments[2]) < 10:
-                                    day = '0'+ line_arguments[2]
-                                else:
-                                    day = line_arguments[2]
+                                #if int(line_arguments[2]) < 10:
+                                #    day = '0'+ line_arguments[2]
+                                #else:
+                                #    day = line_arguments[2]
 
-                                birthday = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
+                                #birthday = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
+                                birthday = date(int(line_arguments[4]), convertMonth(line_arguments[3]), int(line_arguments[2]))
                                 p = findPerson(currentId, list_of_people)
                                 p.addBirthday(birthday)
                                 age = int(line_arguments[4])
                                 p.addAge(2020-age)
                                 birth = False
                             elif death == True and tag == 'DATE':
-                                if int(line_arguments[2]) < 10:
-                                    day = '0'+ line_arguments[2]
-                                else:
-                                    day = line_arguments[2]
-                                deathday =  line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
+                                deathday = date(int(line_arguments[4]), convertMonth(line_arguments[3]), int(line_arguments[2]))
                                 p = findPerson(currentId, list_of_people)
                                 p.addDeath(deathday)
                                 p.addAlive(False)
                                 death = False
                             elif tag == 'NAME':
-                                #name = line_arguments[2] + " " + line_arguments[3]
                                 name = " ".join(line_arguments[2:])
                                 p = findPerson(currentId, list_of_people)
                                 p.addName(name)
@@ -182,21 +177,13 @@ if __name__ == "__main__":
                                 continue;
                         elif currentTag == 'FAM':
                             if married == True and tag == 'DATE':
-                                if int(line_arguments[2]) < 10:
-                                    day = '0'+ line_arguments[2]
-                                else:
-                                    day = line_arguments[2]
                                 fam = findFam(currentId, list_of_fams)
-                                marriedDate = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
+                                marriedDate = date(int(line_arguments[4]), convertMonth(line_arguments[3]), int(line_arguments[2]))
                                 fam.addMarried(marriedDate)
                                 married = False
                             elif divorced == True and tag == 'DATE':
-                                if int(line_arguments[2]) < 10:
-                                    day = '0'+ line_arguments[2]
-                                else:
-                                    day = line_arguments[2]
                                 fam = findFam(currentId, list_of_fams)
-                                divDate = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
+                                divDate = date(int(line_arguments[4]), convertMonth(line_arguments[3]), int(line_arguments[2]))
                                 fam.addDivorced(divDate)
                                 divorced = False
                             elif tag == 'MARR':
@@ -243,5 +230,3 @@ if __name__ == "__main__":
             prettyOutput(list_of_people,list_of_fams)
     except:
         print("Can't open file")
-
-
