@@ -15,6 +15,7 @@ class individuals(object):
         self.death = "NA"
         self.children = "NA"
         self.spouse = "NA"
+        self.marriage = ""
 
     def addName(self, name):
         self.name = name
@@ -101,16 +102,13 @@ def prettyOutput(listIndividuals, listFamilies):
     print("Families")
     print(fam)
 
-
-
-
-if __name__ == "__main__":
+def parse(file_):
     level=tag=argument = "Not Available"
     set_of_valid_tags = { '0' :['HEAD','NOTE','TRLR'], '1':['BIRT','CHIL','DIV','HUSB','WIFE','MARR','NAME','SEX','DEAT','FAMC','FAMS'], '2' :['DATE']}
     list_of_people = []
     list_of_fams = []
     try:
-        with open('ssw555tmHimanshuRajitRitwik2020Spring.ged') as file_variable:
+        with open(file_) as file_variable:
             birth = False
             death = False
             married = False
@@ -143,12 +141,6 @@ if __name__ == "__main__":
                         valid_tags ='Y'
                         if currentTag == 'INDI':
                             if birth == True and tag == 'DATE':
-                                #if int(line_arguments[2]) < 10:
-                                #    day = '0'+ line_arguments[2]
-                                #else:
-                                #    day = line_arguments[2]
-
-                                #birthday = line_arguments[4] + '-' + convertMonth(line_arguments[3]) + '-'+ day
                                 birthday = date(int(line_arguments[4]), convertMonth(line_arguments[3]), int(line_arguments[2]))
                                 p = findPerson(currentId, list_of_people)
                                 p.addBirthday(birthday)
@@ -227,6 +219,9 @@ if __name__ == "__main__":
                     if len(fam.children) > 0:
                         wife.addChildren(fam.children)
             
-            prettyOutput(list_of_people,list_of_fams)
+            #prettyOutput(list_of_people,list_of_fams)
+
     except:
         print("Can't open file")
+    return list_of_people, list_of_fams
+
