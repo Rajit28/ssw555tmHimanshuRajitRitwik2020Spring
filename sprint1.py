@@ -5,7 +5,7 @@ import main_parser
 # make sure dates are before current date
 # Author: Himanshu Tanwar
 def US01():
-	file_ = 'gedcomTests/us01_test.ged'
+	file_ = 'gedcomTests/sprint1_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
 	t = datetime.datetime.today()
 	today = datetime.date(t.year, t.month, t.day)
@@ -29,7 +29,7 @@ def US01():
 # make sure the each birthday is before marriage of an individual 
 # Author: Himanshu Tanwar
 def US02():
-	file_ = 'gedcomTests/us02_test.ged'
+	file_ = 'gedcomTests/sprint1_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
 	peopleErrors = []
 
