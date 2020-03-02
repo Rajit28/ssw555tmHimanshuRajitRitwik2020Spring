@@ -55,21 +55,14 @@ def US03():
 
 	return peopleErrors
 
-def US04():  # US05: Marriage Before Divrce
+def US04():  
 	file_ = 'gedcomTests/sprint1_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
 	peopleErrors=[]
 	for fam in listFam:
 		if fam.husbandId != 'NA':
-			husb = main_parser.findPerson(fam.husbandId, listPeople)
-			wife = main_parser.findPerson(fam.wifeId, listPeople)
 			if fam.married != 'NA' and fam.divorced != 'NA'and fam.divorced < fam.married:
-				husb.marriage = fam.married
-				wife.marriage=fam.married
-				husb.divorce=fam.divorced
-				wife.divorce=fam.divorced
-				peopleErrors.append(wife)
-				peopleErrors.append(husb)
+				peopleErrors.append(fam)
 	return peopleErrors
 
 
@@ -80,12 +73,14 @@ def US05():  # US05: Marriage Before Death
 	peopleErrors=[]
 	for fam in listFam:
 		if fam.husbandId != 'NA':
-			husb = main_parser.findPerson(fam.husbandId, listPeople)
+			h = main_parser.findPerson(fam.husbandId, listPeople)
+			husb = h.createDeepCopy(h)
 			if fam.married != 'NA' and husb.alive ==False and husb.death < fam.married:
 				husb.marriage = fam.married
 				peopleErrors.append(husb)
 		if fam.wifeId != 'NA':
-			wife = main_parser.findPerson(fam.wifeId, listPeople)
+			w = main_parser.findPerson(fam.wifeId, listPeople)
+			wife = w.createDeepCopy(w)
 			if fam.married != 'NA'  and wife.alive==False and wife.death < fam.married:
 				wife.marriage = fam.married
 				peopleErrors.append(wife)
