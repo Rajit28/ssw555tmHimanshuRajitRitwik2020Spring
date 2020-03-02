@@ -45,6 +45,33 @@ def US02():
 				wife.marriage = fam.married
 				peopleErrors.append(wife)
 	return peopleErrors
+def US03():
+	file_ = 'gedcomTests/sprint1_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+	peopleErrors = []
+	for person in listPeople:
+		if person.alive==False and person.birthday > person.death:
+			peopleErrors.append(person)
+
+	return peopleErrors
+
+def US04():  # US05: Marriage Before Divrce
+    	file_ = 'gedcomTests/sprint1_test.ged'
+    	listPeople, listFam = main_parser.parse(file_)
+    	peopleErrors=[]
+    	for fam in listFam:
+            	if fam.husbandId != 'NA':
+                	husb = main_parser.findPerson(fam.husbandId, listPeople)
+                	wife = main_parser.findPerson(fam.wifeId, listPeople)
+                	if fam.married != 'NA' fam.divorced != 'NA'and fam.divorced < fam.married:
+                    		husb.marriage = fam.married
+				wife.marriage=fam.married
+				husb.divorce=fam.divorced
+				wife.divorce=fam.divorced
+				peopleErrors.append(wife)
+				peopleErrors.append(husb)
+	return peopleErrors
+
 
 #Author Ritvik Tiwari
 def US05():  # US05: Marriage Before Death
