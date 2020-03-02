@@ -16,6 +16,7 @@ class individuals(object):
         self.children = "NA"
         self.spouse = "NA"
         self.marriage = ""
+        self.divorce = ""
 
     def addName(self, name):
         self.name = name
