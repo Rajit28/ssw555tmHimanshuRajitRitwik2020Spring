@@ -49,5 +49,34 @@ class TestUS02(unittest.TestCase):
 
 		self.assertTrue(len(indDateErrors) == 0, "All BIRTHDAYS are correct and do not occur after MARRIAGE DATE!")
 
+
+class TestUS05(unittest.TestCase):
+	
+	def test_US05_individuals(self):
+		indDateErrors = sprint1.US05()
+
+		print("\nUS05: INDIVIDUAL Marriage before death Date TEST")
+
+		for person in indDateErrors:
+			print("-> ERROR: Individual " + person.id + " Name " + person.name + "Death DAY "+ str(person.death) + " is before MARRIAGE Date " + str(person.marriage))
+
+		self.assertTrue(len(indDateErrors) == 0, "All dates are correct and do not occur before MARRIAGE DATE!")
+
+
+class TestUS06(unittest.TestCase):
+	
+	def test_US06_individuals(self):
+		indDateErrors = sprint1.US06()
+
+		print("\nUS06: INDIVIDUAL Divorce before death Date TEST")
+
+		for person in indDateErrors:
+			print("-> ERROR: Individual " + person.id + " Name " + person.name + " Divorce Day "+ str(person.divorce) + " is after death Date " + str(person.death))
+
+		self.assertTrue(len(indDateErrors) == 0, "All dates are correct and do not occur before MARRIAGE DATE!")
+
+
+
+
 if __name__ == '__main__':
 	unittest.main()
