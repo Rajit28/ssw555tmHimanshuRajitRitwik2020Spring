@@ -71,10 +71,10 @@ def US06():  #us06: Divorce before death
     	peopleErrors=[]
     	for fam in listFam:
 		if fam.husbandId != 'NA':
-                husb = main_parser.findPerson(fam.husbandId, listPeople)
-                if fam.divorced != 'NA' and husb.alive ==False and husb.death < fam.divorced:
-			husb.divorce = fam.divorced
-                    	peopleErrors.append(husb)
+                	husb = main_parser.findPerson(fam.husbandId, listPeople)
+                	if fam.divorced != 'NA' and husb.alive ==False and husb.death < fam.divorced:
+				husb.divorce = fam.divorced
+                    		peopleErrors.append(husb)
             	if fam.wifeId != 'NA':
                 	wife = main_parser.findPerson(fam.wifeId, listPeople)
                 	if fam.divorced != 'NA'  and wife.alive==False and wife.death < fam.divorced:
