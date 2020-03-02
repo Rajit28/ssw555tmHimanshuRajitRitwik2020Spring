@@ -34,6 +34,19 @@ class individuals(object):
         self.children = children
     def addSpouse(self, spouse):
         self.spouse = spouse
+    def createDeepCopy(self, person):
+        newP = individuals(person.id)
+        newP.name = person.name
+        newP.gender = person.gender
+        newP.birthday = person.birthday
+        newP.alive = person.alive
+        newP.age = person.age
+        newP.death = person.death
+        newP.children = person.children
+        newP.spouse = person.spouse
+        newP.marriage = person.marriage
+        newP.divorce = person.divorce
+        return newP
 
 class families(object):
     def __init__(self, arg):
@@ -102,6 +115,10 @@ def prettyOutput(listIndividuals, listFamilies):
     print(ind)
     print("Families")
     print(fam)
+
+def outputTable(file_):
+    list_of_people, list_of_fams = parse(file_)
+    prettyOutput(list_of_people,list_of_fams)
 
 def parse(file_):
     level=tag=argument = "Not Available"

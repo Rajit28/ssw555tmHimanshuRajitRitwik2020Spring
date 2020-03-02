@@ -13,12 +13,11 @@ class TestUS01(unittest.TestCase):
 		t = datetime.datetime.today()
 		today = datetime.date(t.year, t.month, t.day)
 
-		print("\nUS01: INDIVIDUAL DATES before CURRENT date TEST")
 		for person in indDateErrors:
 			if person.birthday > today:
-				print("-> ERROR: Individual " + person.id + " Name " + person.name + " BIRTHDAY is after today: "+ str(person.birthday))
+				print("ERROR: INDIVIDUAL: US01: " + person.id + " Name " + person.name + " BIRTHDAY is after today: "+ str(person.birthday))
 			elif person.death != 'NA' and person.death > today:
-				print("-> ERROR: Individual " + person.id + " Name " + person.name + " DEATHDAY is after today: "+ str(person.death))
+				print("ERROR: INDIVIDUAL: US01: " + person.id + " Name " + person.name + " DEATHDAY is after today: "+ str(person.death))
 		self.assertTrue(len(indDateErrors) == 0, "All individual dates are correct and do not happen after today!")
 
 	def test_US01_families(self):
@@ -26,12 +25,11 @@ class TestUS01(unittest.TestCase):
 		t = datetime.datetime.today()
 		today = datetime.date(t.year, t.month, t.day)
 
-		print("\nUS01: FAMILIES DATES before CURRENT date TEST")
 		for fam in famDateErrors:
 			if fam.married != 'NA' and fam.married > today:
-				print("-> ERROR: Family " + fam.id + " MARRIAGE DATE is after today: "+ str(fam.married))
+				print("ERROR: FAMILY: US01: " + fam.id + " MARRIAGE DATE is after today: "+ str(fam.married))
 			elif fam.divorced != 'NA' and fam.divorced > today:
-				print("-> ERROR: Family " + fam.id + " DIVORCE DATE is after today: "+ str(fam.divorced))
+				print("ERROR: FAMILY: US01: " + fam.id + " DIVORCE DATE is after today: "+ str(fam.divorced))
 		self.assertTrue(len(famDateErrors) == 0, "All families dates are correct and do not happen after today!")
 	
 # Unittest for US02
@@ -42,10 +40,8 @@ class TestUS02(unittest.TestCase):
 	def test_US02_individuals(self):
 		indDateErrors = sprint1.US02()
 
-		print("\nUS02: INDIVIDUAL BIRTHDATES before MARRIAGE Date TEST")
-
 		for person in indDateErrors:
-			print("-> ERROR: Individual " + person.id + " Name " + person.name + " BIRTHDAY "+ str(person.birthday) + " is after MARRIAGE Date " + str(person.marriage))
+			print("ERROR: INDIVIDUAL: US02: " + person.id + " Name " + person.name + " BIRTHDAY "+ str(person.birthday) + " is after MARRIAGE Date " + str(person.marriage))
 
 		self.assertTrue(len(indDateErrors) == 0, "All BIRTHDAYS are correct and do not occur after MARRIAGE DATE!")
 
@@ -56,10 +52,8 @@ class TestUS05(unittest.TestCase):
 	def test_US05_individuals(self):
 		indDateErrors = sprint1.US05()
 
-		print("\nUS05: INDIVIDUAL Marriage before death Date TEST")
-
 		for person in indDateErrors:
-			print("-> ERROR: Individual " + person.id + " Name " + person.name + "Death DAY "+ str(person.death) + " is before MARRIAGE Date " + str(person.marriage))
+			print("ERROR: INDIVIDUAL: US05: " + person.id + " Name " + person.name + " Death DAY "+ str(person.death) + " is before MARRIAGE Date " + str(person.marriage))
 
 		self.assertTrue(len(indDateErrors) == 0, "All dates are correct and do not occur before MARRIAGE DATE!")
 
@@ -70,25 +64,21 @@ class TestUS06(unittest.TestCase):
 	def test_US06_individuals(self):
 		indDateErrors = sprint1.US06()
 
-		print("\nUS06: INDIVIDUAL Divorce before death Date TEST")
-
 		for person in indDateErrors:
-			print("-> ERROR: Individual " + person.id + " Name " + person.name + " Divorce Day "+ str(person.divorce) + " is after death Date " + str(person.death))
+			print("ERROR: INDIVIDUAL: US06: " + person.id + " Name " + person.name + " Divorce Day "+ str(person.divorce) + " is after death Date " + str(person.death))
 
 		self.assertTrue(len(indDateErrors) == 0, "All dates are correct and do not occur before MARRIAGE DATE!")
 #Author : Rajit Gohel
 
 class TestUS04(unittest.TestCase):
     
-    def test_US04_individuals(self):
-        indDateErrors = sprint1.US04()
+    def test_US04_families(self):
+        famDateErrors = sprint1.US04()
 
-        print("\nUS04: INDIVIDUAL Marriage before Divorce TEST")
+        for fam in famDateErrors:
+            print("ERROR: FAMILY: US04: " + fam.id + " Divorce date: " + str(fam.divorced) + " occurs before Marriage date: " + str(fam.married))
 
-        for person in indDateErrors:
-            print("-> ERROR: Individual " + person.id + " Name " + person.name + " Marriage day "+ str(person.marriage) + " is after divorce Date " + str(person.divorce))
-
-        self.assertTrue(len(indDateErrors) == 0, "All dates are correct and do not occur before MARRIAGE DATE!")
+        self.assertTrue(len(famDateErrors) == 0, "All dates are correct and do not occur before MARRIAGE DATE!")
 
 #Author : Rajit Gohel
 class TestUS03(unittest.TestCase):
@@ -96,12 +86,12 @@ class TestUS03(unittest.TestCase):
     def test_US03_individuals(self):
         indDateErrors = sprint1.US03()
 
-        print("\nUS03: INDIVIDUAL Birth before death Date TEST")
-
         for person in indDateErrors:
-            print("-> ERROR: Individual " + person.id + " Name " + person.name + " BIRTHDAY "+ str(person.birthday) + " is after death Date " + str(person.death))
+            print("ERROR: INDIVIDUAL: US03: " + person.id + " Name " + person.name + " BIRTHDAY "+ str(person.birthday) + " is after death Date " + str(person.death))
 
         self.assertTrue(len(indDateErrors) == 0, "All dates are correct and do not occur before MARRIAGE DATE!")
 
 if __name__ == '__main__':
+	main_parser.outputTable('gedcomTests/sprint1_test.ged')
+	print("")
 	unittest.main()
