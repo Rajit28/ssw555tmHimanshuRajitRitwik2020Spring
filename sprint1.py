@@ -45,3 +45,40 @@ def US02():
 				wife.marriage = fam.married
 				peopleErrors.append(wife)
 	return peopleErrors
+
+#Author Ritvik Tiwari
+def US05():  # US05: Marriage Before Death
+   	file_ = 'gedcomTests/sprint1_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+    peopleErrors=[]
+    for fam in listFam:
+            if fam.husbandId != 'NA':
+                husb = main_parser.findPerson(fam.husbandId, listPeople)
+                if fam.married != 'NA' and husb.alive ==False and husb.death < fam.married:
+                    husb.marriage = fam.married
+                    peopleErrors.append(husb)
+            if fam.wifeId != 'NA':
+                wife = main_parser.findPerson(fam.wifeId, listPeople)
+                if fam.married != 'NA'  and wife.alive==False and wife.death < fam.married:
+                    wife.marriage = fam.married
+                    peopleErrors.append(wife)
+        return peopleErrors
+
+#Ritvik Tiwari
+def US06():  #us06: Divorce before death 
+   	file_ = 'gedcomTests/sprint1_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+    peopleErrors=[]
+    for fam in listFam:
+            if fam.husbandId != 'NA':
+                husb = main_parser.findPerson(fam.husbandId, listPeople)
+                if fam.divorced != 'NA' and husb.alive ==False and husb.death < fam.divorced:
+                    husb.divorce = fam.divorced
+                    peopleErrors.append(husb)
+            if fam.wifeId != 'NA':
+                wife = main_parser.findPerson(fam.wifeId, listPeople)
+                if fam.divorced != 'NA'  and wife.alive==False and wife.death < fam.divorced:
+                    wife.divorce = fam.divorced
+                    peopleErrors.append(wife)
+        return peopleErrors
+
