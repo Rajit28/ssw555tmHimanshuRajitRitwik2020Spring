@@ -57,5 +57,59 @@ def US08():
 						marriageError.append([c,fam.married, fam.id])
 	
 	return marriageError, divorceError 
+
+#Author Ritvik Tiwari
+
+def US12():
+    file_ = 'gedcomTests/sprint2_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+
+    error=[]
+
+    for fam in listFam:
+        if len(fam.children) > 0:
+            if fam.husbandId !='NA':
+                husb= main_parser.findPerson(fam.husbandId, listPeople)
+                for child in fam.children:
+                    c = main_parser.findPerson(child, listPeople)
+                    limit = husb.birthday.year +80
+                    if c.birthday.year > limit:
+                        error.append([c,husb])
+            if fam.wifeId !='NA':
+                wife=  main_parser.findPerson(fam.wifeId, listPeople)
+                for child in fam.children:
+                    c = main_parser.findPerson(child, listPeople)
+                    limit = wife.birthday.year +60
+                    if c.birthday.year > limit:
+                        error.append([c,wife])
+    return error 
+
+#Author Ritvik Tiwari
+
+def US17():
+    file_ = 'gedcomTests/sprint2_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+
+    error =[]
+
+    for fam in listFam:
+
+        if fam.husbandId !='NA' and fam.wifeId != 'NA':
+            husb = main_parser.findPerson(fam.husbandId, listPeople)
+            wife=  main_parser.findPerson(fam.wifeId, listPeople)
+            if len(husb.children) > 0:
+                for child in husb.children:
+                    c = main_parser.findPerson(child, listPeople)
+                    if wife == c :
+                        error.append([husb,c])
+            
+            if len(wife.children) > 0:
+                for child in wife.children:
+                    c = main_parser.findPerson(child, listPeople)
+                    if husb == c :
+                        error.append([wife,c])
+    return error
+
+
 						
 			
