@@ -67,3 +67,29 @@ if __name__ == '__main__':
 	main_parser.outputTable('gedcomTests/sprint2_test.ged')
 	print("")
 	unittest.main()
+	
+# Unittest for US09
+# Author: Rajit Gohel
+class TestUS09(unittest.TestCase):
+
+	def test_US09_individuals(self):
+		peopleError = sprint2.US09()
+
+		for person in peopleError:
+			print("ERROR: INDIVIDUAL: US09: " + person.id + " Name " + person.name + "is born on" + str(person.birthday)+ "which is after death of mother or after 9 months after death of father")
+
+		self.assertTrue(len(peopleError) == 0, "US09: Completed")
+
+# Unittest for US10
+# Author: Rajit Gohel 
+class TestUS10(unittest.TestCase):
+
+	def test_US10_individuals(self):
+		marriageError = sprint2.US10()
+
+		for person in marriageError:
+			print("ERROR: INDIVIDUAL: US10: " + person.id + " Name " + person.name + " is less than 14 years of age before marriage on  "+str(person.marriage))
+
+		
+
+		self.assertTrue(len(marriageError) == 0 , "US10: Completed")	
