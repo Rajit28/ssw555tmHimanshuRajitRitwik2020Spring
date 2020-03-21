@@ -107,6 +107,55 @@ def US17():
 						error.append([wife,c])
     	return error
 
+# Author : Rajit Gohel
 
-						
+def US09():
+	file_ = 'gedcomTests/sprint2_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+
+	childerror = []
+
+	for fam in listFam:
+		if len(fam.children) > 0:
+            if fam.husbandId!='NA':
+                husb = main_parser.findPerson(fam.husbandId, listPeople)
+                for child in fam.children:
+                    c = main_parser.findPerson(child, listPeople)
+                    if husb.death !='NA':
+                        newYear = ( husb.death.month + 9 ) // 12
+                        newMonth = (husb.death.month + 9 ) % 12
+                        if newMonth == 0:
+                            newMonth = 12
+                        limit = datetime.date(husb.death.year + newYear, newMonth, husb.death.day)
+                        if c.birthday > limit:
+                            childerror.append(c)
+            if fam.wifeId != 'NA':
+                wife = main_parser.findPerson(fam.wifeId, listPeople)
+                for child in fam.children:
+                    c = main_parser.findPerson(child, listPeople)
+                    if wife.death !='NA':
+                        if c.birthday > wife.death:
+                            childerror.append(c)
+	return childerror 
+
+# Author : Rajit Gohel
+
+def US10():
+	file_ = 'gedcomTests/sprint2_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+
+    marriageerror=[]
+
+    for fam in listFam:
+        if fam.husbandId!='NA':
+            husb= main_parser.findPerson(fam.husbandId, listPeople)
+            limit = husb.birthday.year +14
+            if husb.marriage.year < limit:
+                marriageerror.append(husb)
+        if fam.wifeId!='NA':
+            wife=  main_parser.findPerson(fam.wifeId, listPeople)
+            limit = wife.birthday.year +14
+            if wife.marriage.year < limit:
+                marriageerror.append(wife)
+    return marriageerror						
 			
