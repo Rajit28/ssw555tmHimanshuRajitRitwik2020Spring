@@ -13,7 +13,7 @@ class individuals(object):
         self.alive = True
         self.age = 0
         self.death = "NA"
-        self.children = "NA"
+        self.children = []
         self.spouse = "NA"
         self.marriage = ""
         self.divorce = ""
@@ -31,7 +31,7 @@ class individuals(object):
     def addDeath(self, death):
         self.death = death
     def addChildren(self, children):
-        self.children = children
+        self.children.append(children)
     def addSpouse(self, spouse):
         self.spouse = spouse
     def createDeepCopy(self, person):
