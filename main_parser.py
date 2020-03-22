@@ -17,6 +17,8 @@ class individuals(object):
         self.spouse = "NA"
         self.marriage = ""
         self.divorce = ""
+        self.marriageList=[]
+        self.divorceList=[]
 
     def addName(self, name):
         self.name = name
