@@ -1,0 +1,45 @@
+Individuals
++-----+--------------------+--------+------------+-----+-------+------------+---------------+--------+
+|  ID |        Name        | Gender |  Birthday  | Age | Alive |   Death    |     Child     | Spouse |
++-----+--------------------+--------+------------+-----+-------+------------+---------------+--------+
+|  I1 |  Ranbir /Kapoor/   |   M    | 1980-06-10 |  40 | False | 2013-05-07 |    {'I10'}    |   I8   |
+|  I2 |   Rishi /Kapoor/   |   M    | 2021-05-07 |  -1 |  True |     NA     | {'I1', 'I12'} |   I3   |
+|  I3 |   Savita /Basu/    |   F    | 1960-06-06 |  60 |  True |     NA     | {'I1', 'I12'} |   I2   |
+|  I4 |    Hemal /Basu/    |   M    | 1934-04-08 |  86 |  True |     NA     |     {'I3'}    |   I5   |
+|  I5 |  Kavita /Kapoor/   |   F    | 1935-03-08 |  85 |  True |     NA     |     {'I3'}    |   I4   |
+|  I6 |  Ranjan /Kapoor/   |   M    | 1928-05-05 |  92 |  True |     NA     |     {'I2'}    |   I7   |
+|  I7 |  Ravina /Kapoor/   |   F    | 1930-06-08 |  90 |  True |     NA     |     {'I2'}    |   I6   |
+|  I8 | Deepika /Padukone/ |   F    | 2025-04-07 |  -5 | False | 2011-05-07 |    {'I10'}    |   I1   |
+|  I9 |  Katrina /Kapoor/  |   F    | 1979-04-03 |  41 |  True |     NA     |    {'I11'}    |   I1   |
+| I10 |  Randhir /Kapoor/  |   M    | 2013-04-04 |  7  |  True |     NA     |       NA      |   NA   |
+| I11 |  Rankit /Kapoor/   |   M    | 2019-02-09 |  1  |  True |     NA     |       NA      |   NA   |
+| I12 |  Ranveer /Kapoor/  |   M    | 1978-04-04 |  42 |  True |     NA     |       NA      |  I13   |
+| I13 |    Alia /Bhatt/    |   F    | 2014-03-05 |  6  | False | 2013-05-07 |       NA      |  I12   |
+| I14 |  Karina /Kapoor/   |   F    | 1980-04-02 |  40 |  True |     NA     |       NA      |  I12   |
++-----+--------------------+--------+------------+-----+-------+------------+---------------+--------+
+Families
++----+------------+------------+------------+------------------+---------+--------------------+---------------+
+| ID |  Married   |  Divorce   | Husband ID |   Husband Name   | Wife ID |     Wife Name      |    Children   |
++----+------------+------------+------------+------------------+---------+--------------------+---------------+
+| F1 | 2017-04-05 |     NA     |     I1     | Ranbir /Kapoor/  |    I9   |  Katrina /Kapoor/  |    {'I11'}    |
+| F2 | 2016-04-06 | 2015-03-06 |     I1     | Ranbir /Kapoor/  |    I8   | Deepika /Padukone/ |    {'I10'}    |
+| F3 | 1978-06-08 |     NA     |     I2     |  Rishi /Kapoor/  |    I3   |   Savita /Basu/    | {'I1', 'I12'} |
+| F4 | 1957-05-04 |     NA     |     I6     | Ranjan /Kapoor/  |    I7   |  Ravina /Kapoor/   |     {'I2'}    |
+| F5 | 1958-05-07 | 2021-06-08 |     I4     |   Hemal /Basu/   |    I5   |  Kavita /Kapoor/   |     {'I3'}    |
+| F6 | 2015-03-06 |     NA     |    I12     | Ranveer /Kapoor/ |   I14   |  Karina /Kapoor/   |       NA      |
+| F7 |     NA     |     NA     |    I12     | Ranveer /Kapoor/ |   I13   |    Alia /Bhatt/    |       NA      |
++----+------------+------------+------------+------------------+---------+--------------------+---------------+
+
+ERROR: FAMILY: US01: F5 DIVORCE DATE is after today: 2021-06-08
+ERROR: INDIVIDUAL: US01: I2 Name Rishi /Kapoor/ BIRTHDAY is after today: 2021-05-07
+ERROR: INDIVIDUAL: US01: I8 Name Deepika /Padukone/ BIRTHDAY is after today: 2025-04-07
+ERROR: INDIVIDUAL: US02: I8 Name Deepika /Padukone/ BIRTHDAY 2025-04-07 is after MARRIAGE Date 2016-04-06
+ERROR: INDIVIDUAL: US02: I2 Name Rishi /Kapoor/ BIRTHDAY 2021-05-07 is after MARRIAGE Date 1978-06-08
+ERROR: INDIVIDUAL: US03: I8 Name Deepika /Padukone/ BIRTHDAY 2025-04-07 is after death Date 2011-05-07
+ERROR: INDIVIDUAL: US03: I13 Name Alia /Bhatt/ BIRTHDAY 2014-03-05 is after death Date 2013-05-07
+ERROR: FAMILY: US04: F2 Divorce date: 2015-03-06 occurs before Marriage date: 2016-04-06
+ERROR: INDIVIDUAL: US05: I1 Name Ranbir /Kapoor/ Death DAY 2013-05-07 is before MARRIAGE Date 2017-04-05
+ERROR: INDIVIDUAL: US05: I1 Name Ranbir /Kapoor/ Death DAY 2013-05-07 is before MARRIAGE Date 2016-04-06
+ERROR: INDIVIDUAL: US05: I8 Name Deepika /Padukone/ Death DAY 2011-05-07 is before MARRIAGE Date 2016-04-06
+ERROR: INDIVIDUAL: US06: I1 Name Ranbir /Kapoor/ Divorce Day 2015-03-06 is after death Date 2013-05-07
+ERROR: INDIVIDUAL: US06: I8 Name Deepika /Padukone/ Divorce Day 2015-03-06 is after death Date 2011-05-07
