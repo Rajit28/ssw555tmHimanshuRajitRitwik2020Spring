@@ -60,6 +60,29 @@ def US08():
 
 #Author Ritvik Tiwari
 
+def US11():
+    	file_ = 'gedcomTests/sprint2_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+
+    	error=[]
+    	for fam in listFam:
+        	if fam.husbandId !='NA':
+            		husb = main_parser.findPerson(fam.husbandId, listPeople)
+            		if len(husb.marriageList) =0:
+                		husb.marriageList.append(fam.married)
+            		else:
+                		if len(husb.marriageList) != len(husb.divorceList):
+                    			error.append(husb)
+         	if fam.wifeId !='NA':
+            		wife = main_parser.findPerson(fam.wifeId, listPeople)
+            		if len(wife.marriageList) =0:
+                		wife.marriageList.append(fam.married)
+            		else:
+                		if len(wife.marriageList) != len(wife.divorceList):
+                    			error.append(wife)
+
+    	return error 
+
 def US12():
 	file_ = 'gedcomTests/sprint2_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
