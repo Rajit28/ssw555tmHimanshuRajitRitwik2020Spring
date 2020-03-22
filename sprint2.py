@@ -68,15 +68,17 @@ def US11():
     	for fam in listFam:
         	if fam.husbandId !='NA':
             		husb = main_parser.findPerson(fam.husbandId, listPeople)
-            		if len(husb.marriageList) =0:
+            		if len(husb.marriageList) ==0 and len(husb.divorceList)==0 and fam.divorced!='NA':
                 		husb.marriageList.append(fam.married)
+				husb.divorceList.append(fam.divorced)
             		else:
                 		if len(husb.marriageList) != len(husb.divorceList):
                     			error.append(husb)
          	if fam.wifeId !='NA':
             		wife = main_parser.findPerson(fam.wifeId, listPeople)
-            		if len(wife.marriageList) =0:
+            		if len(wife.marriageList) ==0 and len(wife.divorceList)==0 and fam.divorced!='NA':
                 		wife.marriageList.append(fam.married)
+				wife.divorceList.append(fam.divorced)
             		else:
                 		if len(wife.marriageList) != len(wife.divorceList):
                     			error.append(wife)
