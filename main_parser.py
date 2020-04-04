@@ -19,6 +19,8 @@ class individuals(object):
         self.divorce = ""
         self.marriageList=[]
         self.divorceList=[]
+        self.mother=""
+        self.father=""
 
     def addName(self, name):
         self.name = name
@@ -48,6 +50,8 @@ class individuals(object):
         newP.spouse = person.spouse
         newP.marriage = person.marriage
         newP.divorce = person.divorce
+        newp.mother=person.mother
+        newp.father=person.father
         return newP
 
 class families(object):
