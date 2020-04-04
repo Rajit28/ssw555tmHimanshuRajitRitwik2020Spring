@@ -77,7 +77,7 @@ def US17():
         	if fam.husbandId !='NA' and fam.wifeId != 'NA':
             		husb = main_parser.findPerson(fam.husbandId, listPeople)
             		wife=  main_parser.findPerson(fam.wifeId, listPeople)
-            		if fam.children != 'NA':
+            		if len(fam.children) >0:
                 		for child in fam.children:
                     			c = main_parser.findPerson(child, listPeople)
                     			husb.children.append(c)
