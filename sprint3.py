@@ -64,6 +64,42 @@ def US14():
 
 print(US13)
 
+#Author Rajit Gohel
+#US15
+
+def US15():
+    file_ = 'gedcomTests/sprint2_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+    
+    siberror=[]
+    for fam in listFam:
+        if len(fam.children) >=15:
+            f= main_parser.findfam(fam.id,listFam)
+            siberror.append(f)
+    return siberror
+
+#Author Rajit Gohel
+#US16
+
+def US16():
+    file_ = 'gedcomTests/sprint2_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+
+    lastnameerror=[]
+    for fam in listFam:
+        if fam.husbandId!='NA':
+            husb = main_parser.findPerson(fam.husbandId, listPeople)
+            list_name_husb=husb.name.split()
+            if len(fam.children)>0:
+                for child in fam.children:
+                    c = main_parser.findPerson(child, listPeople)
+                    if c.gender=="M":
+                        list_child_name=c.name.split()
+                        if list_name_husb[-1] != list_child_name[-1]:
+                            f= main_parser.findfam(fam.id,listFam)
+                            lastnameerror.append(f)
+    return lastnameerror
+
 #Author Ritvik Tiwari
 #US17 
 
