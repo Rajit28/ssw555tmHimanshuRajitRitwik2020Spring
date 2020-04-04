@@ -63,3 +63,69 @@ def US14():
 
 
 print(US13)
+
+#Author Ritvik Tiwari
+#US17 
+
+def US17():
+	file_ = 'gedcomTests/sprint2_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+
+    	error =[]
+
+    	for fam in listFam:
+        	if fam.husbandId !='NA' and fam.wifeId != 'NA':
+            		husb = main_parser.findPerson(fam.husbandId, listPeople)
+            		wife=  main_parser.findPerson(fam.wifeId, listPeople)
+            		if fam.children != 'NA':
+                		for child in fam.children:
+                    			c = main_parser.findPerson(child, listPeople)
+                    			husb.children.append(c)
+                    			wife.children.append(c)
+
+    	for fam in listFam:
+        	if fam.husbandId !='NA' and fam.wifeId != 'NA':
+            		husb = main_parser.findPerson(fam.husbandId, listPeople)
+            		wife=  main_parser.findPerson(fam.wifeId, listPeople)
+            		if len(husb.children) > 0:
+                		for child in husb.children:
+                    			c = main_parser.findPerson(child, listPeople)
+                    			if wife == c :
+                        			error.append([husb,c])
+            
+            		if len(wife.children) > 0:
+                		for child in wife.children:
+                    			c = main_parser.findPerson(child, listPeople)
+                    			if husb == c :
+                        			error.append([wife,c])
+    	return error
+
+#Author Ritvik Tiwari
+#US 18 
+
+def US18():
+    	file_ = 'gedcomTests/sprint2_test.ged'
+	listPeople, listFam = main_parser.parse(file_)
+
+    	error=[]
+    	for fam in listFam:
+        	if fam.husbandId !='NA':
+            		husb = main_parser.findPerson(fam.husbandId, listPeople)
+            		if len(husb.children) > 0:
+                		for child in husb.children:
+                    			c = main_parser.findPerson(child, listPeople)
+                    			c.father=husb
+        	if fam.wifeId!='NA':
+            		wife=  main_parser.findPerson(fam.wifeId, listPeople)
+            		if len(wife.children) >0:
+               			for child in wife.children:
+                    			c = main_parser.findPerson(child, listPeople)
+                    			c.mother=wife
+    	for fam in listFam:
+        	if fam.husbandId !='NA' and fam.wifeId!='NA' :
+            		husb = main_parser.findPerson(fam.husbandId, listPeople)
+            		wife=  main_parser.findPerson(fam.wifeId, listPeople)
+            		if husb.mother == wife.mother or husb.father==wife.father:
+                		error.append([husb,wife])
+    	return error 
+
