@@ -26,6 +26,32 @@ class TestUS14(unittest.TestCase):
 			print("ERROR: FAMILY: US14: "+ fam.id + " has 5 or more children with the same birthday!")
 		
 		self.assertTrue(len(siblingErrorList) == 0 , "US14: Number of children with same birthday is less than 5!")
+
+# Unittest for US15
+# Author: Rajit Gohel
+		
+class TestUS15(unittest.TestCase):
+
+	def test_US15_individuals(self):
+		Error = sprint2.US15()
+
+		for family in Error:
+			print("ERROR: family: US15: " + family.id + "has more than 15 sibilings"
+		
+		self.assertTrue(len(Error) == 0, "US15: Completed")	
+			      
+# Unittest for US16
+# Author: Rajit Gohel			      
+			      
+class TestUS16(unittest.TestCase):
+
+	def test_US16_individuals(self):
+		Error = sprint2.US16()
+
+		for family in Error:
+			print("ERROR: family: US18: " + family.id + "has last name mismatch in males")
+		
+		self.assertTrue(len(Error) == 0, "US16: Completed")			      
 		
 
 		
