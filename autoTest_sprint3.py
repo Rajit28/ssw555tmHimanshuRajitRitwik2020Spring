@@ -26,6 +26,7 @@ class TestUS14(unittest.TestCase):
 			print("ERROR: FAMILY: US14: "+ fam.id + " has 5 or more children with the same birthday!")
 		
 		self.assertTrue(len(siblingErrorList) == 0 , "US14: Number of children with same birthday is less than 5!")
+		
 
 		
 # Unittest for US17
