@@ -5,7 +5,7 @@ import main_parser
 # make sure dates are before current date
 # Author: Himanshu Tanwar
 def US01():
-	file_ = 'gedcomTests/sprint1_test.ged'
+	file_ = 'gedcomTests/main_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
 	t = datetime.datetime.today()
 	today = datetime.date(t.year, t.month, t.day)
@@ -29,7 +29,7 @@ def US01():
 # make sure the each birthday is before marriage of an individual 
 # Author: Himanshu Tanwar
 def US02():
-	file_ = 'gedcomTests/sprint1_test.ged'
+	file_ = 'gedcomTests/main_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
 	peopleErrors = []
 
@@ -46,7 +46,7 @@ def US02():
 				peopleErrors.append(wife)
 	return peopleErrors
 def US03():
-	file_ = 'gedcomTests/sprint1_test.ged'
+	file_ = 'gedcomTests/main_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
 	peopleErrors = []
 	for person in listPeople:
@@ -56,7 +56,7 @@ def US03():
 	return peopleErrors
 
 def US04():  
-	file_ = 'gedcomTests/sprint1_test.ged'
+	file_ = 'gedcomTests/main_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
 	peopleErrors=[]
 	for fam in listFam:
@@ -68,7 +68,7 @@ def US04():
 
 #Author Ritvik Tiwari
 def US05():  # US05: Marriage Before Death
-	file_ = 'gedcomTests/sprint1_test.ged'
+	file_ = 'gedcomTests/main_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
 	peopleErrors=[]
 	for fam in listFam:
@@ -88,7 +88,7 @@ def US05():  # US05: Marriage Before Death
 
 #Ritvik Tiwari
 def US06():  #us06: Divorce before death 
-	file_ = 'gedcomTests/sprint1_test.ged'
+	file_ = 'gedcomTests/main_test.ged'
 	listPeople, listFam = main_parser.parse(file_)
 	peopleErrors=[]
 	for fam in listFam:

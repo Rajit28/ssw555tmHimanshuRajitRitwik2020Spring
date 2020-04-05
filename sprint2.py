@@ -6,7 +6,7 @@ import main_parser
 # Author: Himanshu Tanwar
 
 def US07():
-    file_ = 'gedcomTests/sprint1_test.ged'
+    file_ = 'gedcomTests/main_test.ged'
     listPeople, listFam = main_parser.parse(file_)
     t = datetime.datetime.today()
     today = datetime.date(t.year, t.month, t.day)
@@ -30,7 +30,7 @@ def US07():
 # Author: Himanshu Tanwar
 
 def US08():
-    file_ = 'gedcomTests/sprint1_test.ged'
+    file_ = 'gedcomTests/main_test.ged'
     listPeople, listFam = main_parser.parse(file_)
     t = datetime.datetime.today()
     today = datetime.date(t.year, t.month, t.day)
@@ -61,7 +61,7 @@ def US08():
 #Author Ritvik Tiwari
 
 def US11():
-    file_ = 'gedcomTests/sprint1_test.ged'
+    file_ = 'gedcomTests/main_test.ged'
     listPeople, listFam = main_parser.parse(file_)
     error=[]
     for fam in listFam:
@@ -100,7 +100,7 @@ def US11():
 #Author Ritvik Tiwari
 
 def US12():
-    file_ = 'gedcomTests/sprint1_test.ged'
+    file_ = 'gedcomTests/main_test.ged'
     listPeople, listFam = main_parser.parse(file_)
     error=[]
     for fam in listFam:
@@ -149,7 +149,7 @@ def US12():
 # Author : Rajit Gohel
 
 def US09():
-    file_ = 'gedcomTests/sprint1_test.ged'
+    file_ = 'gedcomTests/main_test.ged'
     listPeople, listFam = main_parser.parse(file_)
 
     childerror = []
@@ -180,7 +180,7 @@ def US09():
 # Author : Rajit Gohel
 
 def US10():
-    file_ = 'gedcomTests/sprint1_test.ged'
+    file_ = 'gedcomTests/main_test.ged'
     listPeople, listFam = main_parser.parse(file_)
 
     marriageerror=[]

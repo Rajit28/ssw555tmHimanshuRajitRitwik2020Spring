@@ -33,10 +33,10 @@ class TestUS14(unittest.TestCase):
 class TestUS15(unittest.TestCase):
 
 	def test_US15_individuals(self):
-		Error = sprint2.US15()
+		Error = sprint3.US15()
 
 		for family in Error:
-			print("ERROR: family: US15: " + family.id + "has more than 15 sibilings"
+			print("ERROR: FAMILY: US15: " + family.id + " has more than 15 sibilings")
 		
 		self.assertTrue(len(Error) == 0, "US15: Completed")	
 			      
@@ -46,10 +46,10 @@ class TestUS15(unittest.TestCase):
 class TestUS16(unittest.TestCase):
 
 	def test_US16_individuals(self):
-		Error = sprint2.US16()
+		Error = sprint3.US16()
 
 		for family in Error:
-			print("ERROR: family: US18: " + family.id + "has last name mismatch in males")
+			print("ERROR: FAMILY: US16: " + family.id + " has last name mismatch in males")
 		
 		self.assertTrue(len(Error) == 0, "US16: Completed")			      
 		
@@ -60,12 +60,12 @@ class TestUS16(unittest.TestCase):
 class TestUS17(unittest.TestCase):
 
 	def test_US17_individuals(self):
-		Error = sprint2.US17()
+		Error = sprint3.US17()
 		for person in Error:
-            		if person[1].gender =="M":
-				print("ERROR: INDIVIDUAL: US17: " + person[0].id + " Name " + person[0].name + "is married to his child " + person[1].id)
-            		else:
-                 		print("ERROR: INDIVIDUAL: US17: " + person[0].id + " Name " + person[0].name + "is married to her child " + person[1].id)
+			if person[1].gender =="M":
+				print("ERROR: INDIVIDUAL: US17: " + person[0].id + " Name " + person[0].name + " is married to his child " + person[1].id)
+			else:
+				print("ERROR: INDIVIDUAL: US17: " + person[0].id + " Name " + person[0].name + " is married to her child " + person[1].id)
 		self.assertTrue(len(Error) == 0, "US17: Completed")
 
 
@@ -74,10 +74,10 @@ class TestUS17(unittest.TestCase):
 class TestUS18(unittest.TestCase):
 
 	def test_US18_individuals(self):
-		Error = sprint2.US18()
+		Error = sprint3.US18()
 
 		for person in Error:
-			print("ERROR: INDIVIDUAL: US18: " + person[0].id + " Name " + person[0].name + "is married to sibling " + person[1].id)
+			print("ERROR: INDIVIDUAL: US18: " + person[0].id + " Name " + person[0].name + " is married to sibling " + person[1].id)
 		
 		self.assertTrue(len(Error) == 0, "US18: Completed")
 
