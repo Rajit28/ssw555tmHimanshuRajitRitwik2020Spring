@@ -1,0 +1,89 @@
+Individuals
++-----+--------------------+--------+------------+-----+-------+------------+-----------------------------------------------------------------------------------------------------------------+--------+
+|  ID |        Name        | Gender |  Birthday  | Age | Alive |   Death    |                                                      Child                                                      | Spouse |
++-----+--------------------+--------+------------+-----+-------+------------+-----------------------------------------------------------------------------------------------------------------+--------+
+|  I1 |  Ranbir /Kapoor/   |   M    | 1978-06-10 |  42 | False | 2013-05-07 |                                                  {'I11', 'I10'}                                                 |   I8   |
+|  I2 |   Rishi /Kapoor/   |   M    | 2021-05-07 |  -1 |  True |     NA     | {'I1', 'I12', 'I15', 'I16', 'I17', 'I18', 'I19', 'I20', 'I21', 'I22', 'I23', 'I24', 'I25', 'I26', 'I27', 'I28'} |   I3   |
+|  I3 |   Savita /Basu/    |   F    | 1960-06-06 |  60 |  True |     NA     | {'I1', 'I12', 'I15', 'I16', 'I17', 'I18', 'I19', 'I20', 'I21', 'I22', 'I23', 'I24', 'I25', 'I26', 'I27', 'I28'} |   I4   |
+|  I4 |    Hemal /Basu/    |   M    | 1934-04-08 |  86 |  True |     NA     |                                                      {'I3'}                                                     |   I3   |
+|  I5 |  Kavita /Kapoor/   |   F    | 1935-03-08 |  85 |  True |     NA     |                                                      {'I3'}                                                     |   I4   |
+|  I6 |  Ranjan /Kapoor/   |   M    | 1928-05-05 |  92 |  True |     NA     |                                                      {'I2'}                                                     |   I7   |
+|  I7 |  Ravina /Kapoor/   |   F    | 1930-06-08 |  90 |  True |     NA     |                                                      {'I2'}                                                     |   I6   |
+|  I8 | Deepika /Padukone/ |   F    | 2025-04-07 |  -5 | False | 2011-05-07 |                                                     {'I10'}                                                     |   I1   |
+|  I9 |  Katrina /Kapoor/  |   F    | 1979-04-03 |  41 |  True |     NA     |                                                     {'I11'}                                                     |   I1   |
+| I10 |  Randhir /Kapoor/  |   M    | 2013-04-04 |  7  |  True |     NA     |                                                        {}                                                       |   NA   |
+| I11 |  Rankit /Kapoor/   |   M    | 2019-02-09 |  1  |  True |     NA     |                                                        {}                                                       |   NA   |
+| I12 |  Ranveer /Kapoor/  |   M    | 1978-06-14 |  42 |  True |     NA     |                                                        {}                                                       |  I13   |
+| I13 |    Alia /Bhatt/    |   F    | 1820-03-05 | 200 | False | 1990-05-07 |                                                        {}                                                       |  I12   |
+| I14 |  Karina /Kapoor/   |   F    | 1980-04-02 |  40 |  True |     NA     |                                                        {}                                                       |  I12   |
+| I15 |    Ran /Kapoor/    |   M    | 1980-06-14 |  40 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I16 |   Jeff /Kapoor/    |   M    | 1980-06-14 |  40 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I17 |    Bob /Kapoor/    |   M    | 1980-06-14 |  40 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I18 |   Alex /Kapoor/    |   M    | 1980-06-14 |  40 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I19 |   Sarah /Kapoor/   |   F    | 1980-06-14 |  40 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I20 |   Anita /Kapoor/   |   F    | 1980-06-14 |  40 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I21 |   Cory /Kapoor/    |   M    | 1982-06-14 |  38 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I22 |  Charles /Kapoor/  |   M    | 1984-08-25 |  36 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I23 |   Jayce /Kapoor/   |   M    | 1985-09-19 |  35 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I24 |    Saif /Azad/     |   M    | 1986-10-10 |  34 |  True |     NA     |                                                        {}                                                       |  I25   |
+| I25 |   Rita /Kapoor/    |   F    | 1988-10-19 |  32 |  True |     NA     |                                                        {}                                                       |  I24   |
+| I26 |   Alina /Kapoor/   |   F    | 1989-11-21 |  31 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I27 |   Tina /Kapoor/    |   F    | 1991-11-29 |  29 |  True |     NA     |                                                        {}                                                       |   NA   |
+| I28 |   Anne /Kapoor/    |   F    | 1992-12-15 |  28 |  True |     NA     |                                                        {}                                                       |   NA   |
++-----+--------------------+--------+------------+-----+-------+------------+-----------------------------------------------------------------------------------------------------------------+--------+
+Families
++----+------------+------------+------------+------------------+---------+--------------------+-----------------------------------------------------------------------------------------------------------------+
+| ID |  Married   |  Divorce   | Husband ID |   Husband Name   | Wife ID |     Wife Name      |                                                     Children                                                    |
++----+------------+------------+------------+------------------+---------+--------------------+-----------------------------------------------------------------------------------------------------------------+
+| F1 | 2017-04-05 |     NA     |     I1     | Ranbir /Kapoor/  |    I9   |  Katrina /Kapoor/  |                                                     {'I11'}                                                     |
+| F2 | 2016-04-06 | 2018-03-06 |     I1     | Ranbir /Kapoor/  |    I8   | Deepika /Padukone/ |                                                     {'I10'}                                                     |
+| F3 | 1978-06-08 | 1977-03-06 |     I2     |  Rishi /Kapoor/  |    I3   |   Savita /Basu/    | {'I1', 'I12', 'I15', 'I16', 'I17', 'I18', 'I19', 'I20', 'I21', 'I22', 'I23', 'I24', 'I25', 'I26', 'I27', 'I28'} |
+| F4 | 1957-05-04 |     NA     |     I6     | Ranjan /Kapoor/  |    I7   |  Ravina /Kapoor/   |                                                      {'I2'}                                                     |
+| F5 | 1958-05-07 | 2021-06-08 |     I4     |   Hemal /Basu/   |    I5   |  Kavita /Kapoor/   |                                                      {'I3'}                                                     |
+| F6 | 2015-03-06 |     NA     |    I12     | Ranveer /Kapoor/ |   I14   |  Karina /Kapoor/   |                                                        NA                                                       |
+| F7 |     NA     |     NA     |    I12     | Ranveer /Kapoor/ |   I13   |    Alia /Bhatt/    |                                                        NA                                                       |
+| F8 |     NA     |     NA     |     I4     |   Hemal /Basu/   |    I3   |   Savita /Basu/    |                                                        NA                                                       |
+| F9 |     NA     |     NA     |    I24     |   Saif /Azad/    |   I25   |   Rita /Kapoor/    |                                                        NA                                                       |
++----+------------+------------+------------+------------------+---------+--------------------+-----------------------------------------------------------------------------------------------------------------+
+
+
+ERROR: FAMILY: US01: F5 DIVORCE DATE is after today: 2021-06-08
+ERROR: INDIVIDUAL: US01: I2 Name Rishi /Kapoor/ BIRTHDAY is after today: 2021-05-07
+ERROR: INDIVIDUAL: US01: I8 Name Deepika /Padukone/ BIRTHDAY is after today: 2025-04-07
+ERROR: INDIVIDUAL: US02: I8 Name Deepika /Padukone/ BIRTHDAY 2025-04-07 is after MARRIAGE Date 2016-04-06
+ERROR: INDIVIDUAL: US02: I2 Name Rishi /Kapoor/ BIRTHDAY 2021-05-07 is after MARRIAGE Date 1978-06-08
+ERROR: INDIVIDUAL: US03: I8 Name Deepika /Padukone/ BIRTHDAY 2025-04-07 is after death Date 2011-05-07
+ERROR: FAMILY: US04: F3 Divorce date: 1977-03-06 occurs before Marriage date: 1978-06-08
+ERROR: INDIVIDUAL: US05: I1 Name Ranbir /Kapoor/ Death DAY 2013-05-07 is before MARRIAGE Date 2017-04-05
+ERROR: INDIVIDUAL: US05: I1 Name Ranbir /Kapoor/ Death DAY 2013-05-07 is before MARRIAGE Date 2016-04-06
+ERROR: INDIVIDUAL: US05: I8 Name Deepika /Padukone/ Death DAY 2011-05-07 is before MARRIAGE Date 2016-04-06
+ERROR: INDIVIDUAL: US06: I1 Name Ranbir /Kapoor/ Divorce Day 2018-03-06 is after death Date 2013-05-07
+ERROR: INDIVIDUAL: US06: I8 Name Deepika /Padukone/ Divorce Day 2018-03-06 is after death Date 2011-05-07
+ERROR: INDIVIDUAL: US07: I13 Name Alia /Bhatt/ DEATH 1990-05-07 is greater than 150 years after birth: 1820-03-05
+ERROR: INDIVIDUAL: US08: I15 Name Ran /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I16 Name Jeff /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I17 Name Bob /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I18 Name Alex /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I19 Name Sarah /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I20 Name Anita /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I21 Name Cory /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I22 Name Charles /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I23 Name Jayce /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I24 Name Saif /Azad/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I25 Name Rita /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I26 Name Alina /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I27 Name Tina /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US08: I28 Name Anne /Kapoor/ born 9 months AFTER divorce date of FAMILY: F3 : 1977-03-06
+ERROR: INDIVIDUAL: US09: I11 Name Rankit /Kapoor/ is born on 2019-02-09 which is after death of mother or after 9 months after death of father
+ERROR: INDIVIDUAL: US09: I10 Name Randhir /Kapoor/ is born on 2013-04-04 which is after death of mother or after 9 months after death of father
+ERROR: INDIVIDUAL: US10: I8 Name Deepika /Padukone/ is less than 14 years of age before marriage on  
+ERROR: INDIVIDUAL: US10: I2 Name Rishi /Kapoor/ is less than 14 years of age before marriage on  
+ERROR: INDIVIDUAL: US11: I1 Name Ranbir /Kapoor/ BIGAMY error, married to more than 1 person at the same time
+ERROR: INDIVIDUAL: US12: I6 Name Ranjan /Kapoor/ is more than 80 years older than the child I2: Father's birthday 1928-05-05, Child's birthday 2021-05-07
+ERROR: INDIVIDUAL: US12: I7 Name Ravina /Kapoor/ is more than 60 years older than the child I2: Mother's birthday 1930-06-08, Child's birthday 2021-05-07
+ERROR: INDIVIDUAL: US13: Ranbir /Kapoor/ Birthday 1978-06-10 is within incorrect spacing with Ranveer /Kapoor/ Birthday 1978-06-14
+ERROR: FAMILY: US14: F3 has 5 or more children with the same birthday!
+ERROR: FAMILY: US15: F3 has more than 15 sibilings
+ERROR: FAMILY: US16: F3 has last name mismatch in males
+ERROR: INDIVIDUAL: US17: I4 Name Hemal /Basu/ is married to her child I3
+ERROR: INDIVIDUAL: US18: I24 Name Saif /Azad/ is married to sibling I25

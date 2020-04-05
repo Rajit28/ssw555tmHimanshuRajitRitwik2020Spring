@@ -50,8 +50,8 @@ class individuals(object):
         newP.spouse = person.spouse
         newP.marriage = person.marriage
         newP.divorce = person.divorce
-        newp.mother=person.mother
-        newp.father=person.father
+        newP.mother=person.mother
+        newP.father=person.father
         return newP
 
 class families(object):
@@ -235,13 +235,15 @@ def parse(file_):
                     if fam.wifeId != 'NA':
                         husband.addSpouse(fam.wifeId)
                     if len(fam.children) > 0:
-                        husband.addChildren(fam.children)
+                        for c in fam.children:
+                            husband.addChildren(c)
                 if fam.wifeId != 'NA':
                     wife = findPerson(fam.wifeId, list_of_people)
                     if fam.husbandId != 'NA':
                         wife.addSpouse(fam.husbandId)
                     if len(fam.children) > 0:
-                        wife.addChildren(fam.children)
+                        for c in fam.children:
+                            wife.addChildren(c)
             
             #prettyOutput(list_of_people,list_of_fams)
 
