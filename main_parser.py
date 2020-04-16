@@ -94,6 +94,41 @@ def findFam(id_, listFam):
             break;
     return found
 
+def findParents(id_, listFam):
+    found = ""
+    for fam in listFam:
+        if id_ in fam.children:
+            found = fam
+            break;
+    return found
+
+def checkIfSiblings(fam1, fam2, listFam):
+    #just makes sure siblings aren't married, if they are return false
+    if fam1.id == fam2.id:
+        return False
+    h1fam = findParents(fam1.husbandId, listFam)
+    h2fam = findParents(fam2.husbandId, listFam)
+    w1fam = findParents(fam1.wifeId, listFam)
+    w2fam = findParents(fam2.wifeId, listFam)
+    
+    if h1fam:
+        if h2fam: 
+            if h1fam.id == h2fam.id:
+                return True
+        elif w2fam:
+            if h1fam.id == w2fam.id:
+                return True
+    elif w1fam:
+        if h2fam:
+            if w1fam.id == h2fam.id:
+                return True
+        elif w2fam:
+            if w1fam.id == w2fam.id:
+                return True
+                
+    return False
+
+
 def convertMonth(month):
     allMonth = {'JAN':1, 'FEB':2, 'MAR':3,
                 'APR':4, 'MAY':5, 'JUN':6,
