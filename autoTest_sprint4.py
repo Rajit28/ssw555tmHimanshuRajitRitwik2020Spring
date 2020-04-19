@@ -22,6 +22,26 @@ class TestUS20(unittest.TestCase):
         for fam in errorList:
             print("ERROR: FAMILIES: US20: "+ fam.id + " Marriage is with Uncle/Aunt!")
         self.assertTrue(len(errorList) == 0 , "US20: Marriages are correct and no one is married to an Aunt or Uncle!")
+	
+# Author: Rajit Gohel
+class TestUS21(unittest.TestCase):
+
+    def test_US21_individuals(self):
+        errorList = sprint4.US21()
+        for err in errorList:
+            print("ERROR: Person {} does not have the corect gender assigned".format(err))
+        self.assertTrue(len(errorList) == 0 , "US21: User story Complete")
+
+# Author: Rajit Gohel
+class TestUS22(unittest.TestCase):
+
+    def test_US22_individuals(self):
+        indList, famlist = sprint4.US22()
+        for err in indList:
+            print("ERROR: More than one person with id {}".format(err))
+        for err in famlist:
+            print("ERROR: More than one family with id {}".format(err))
+        self.assertTrue(len(errorList) == 0 , "US22: User story Complete")
 
 #Author Ritvik Tiwari
 class TestUS23(unittest.TestCase):
