@@ -45,3 +45,36 @@ def US20():
                 elif wSiblings == True:
                     individualError.append(fam)
     return individualError
+
+
+#Author Ritvik Tiwari
+def US23():
+    file_ = 'gedcomTests/main_test.ged'
+    listPeople, listFam = main_parser.parse(file_)
+    
+    birthdayError=[]
+    dictionary={}
+    for person in listPeople:
+        if person.name in dictionary and person.birthday == dictionary[person.name][0] and person.id != dictionary[person.name][1]:
+            birthdayError.append((person.birthdayError,person.name))
+        else:
+            dictionary[person.name] = (person.birthday,person.id)
+
+    return birthdayError
+
+#Author Ritvik Tiwari
+def US24():
+    file_ = 'gedcomTests/main_test.ged'
+    listPeople, listFam = main_parser.parse(file_)
+
+    familyError=[]
+    dictionary={}
+    for fam in listFam:
+        if fam.husbandId != 'NA' and fam.wifeId !='NA':
+            husb= main_parser.findPerson(fam.husbandId, listPeople)
+            wife= main_parser.findPerson(fam.wifeId, listPeople)
+            if husb.name in dictionary and dictionary[husb.name][0] == wife.name and dictionary[husb.name][1] == fam.married:
+                familyError.append((husb.name,wife.name,fam.married))
+            else:
+                dictionary[husb.name]=(wife.name,fam.married)
+    return familyError
