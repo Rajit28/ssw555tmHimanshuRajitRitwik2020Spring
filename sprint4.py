@@ -54,15 +54,21 @@ def US21():
 
     Error=[]
 
+    flag1 = False
+    flag2 = False
     for fam in listFam:
         if fam.husbandId !='NA':
             husb= main_parser.findPerson(fam.husbandId, listPeople)
             if husb.gender !='M':
-                Error.append(husb)
+                flag1 = True
         if fam.wifeId !='NA':
             wife=main_parser.findPerson(fam.wifeId, listPeople)
             if wife.gender!='F':
-                Error.append(wife)
+                flag2 = True
+        if flag1 or flag2:
+            Error.append(fam)
+            flag1 = False
+            flag2 = False
     return Error
 
 #Author Rajit Gohel
@@ -80,7 +86,7 @@ def US22():
         else:
             dictionary[person.id]= person
     
-    dictionary=[]
+    dictionary={}
     for family in listFam:
         if family.id in dictionary and dictionary[family.id] != family:
             FamilyIDError.append(family.id)
@@ -99,7 +105,7 @@ def US23():
     dictionary={}
     for person in listPeople:
         if person.name in dictionary and person.birthday == dictionary[person.name][0] and person.id != dictionary[person.name][1]:
-            birthdayError.append((person.birthdayError,person.name))
+            birthdayError.append((person.birthday,person.name))
         else:
             dictionary[person.name] = (person.birthday,person.id)
 
@@ -116,8 +122,12 @@ def US24():
         if fam.husbandId != 'NA' and fam.wifeId !='NA':
             husb= main_parser.findPerson(fam.husbandId, listPeople)
             wife= main_parser.findPerson(fam.wifeId, listPeople)
-            if husb.name in dictionary and dictionary[husb.name][0] == wife.name and dictionary[husb.name][1] == fam.married:
-                familyError.append((husb.name,wife.name,fam.married))
+            if husb.name in dictionary and dictionary[husb.name][1] == fam.married:
+                familyError.append((husb.name,fam.married))
             else:
                 dictionary[husb.name]=(wife.name,fam.married)
+            if wife.name in dictionary and dictionary[wife.name][1] == fam.married:
+                familyError.append((wife.name,fam.married))
+            else:
+                dictionary[wife.name]=(husb.name,fam.married)
     return familyError

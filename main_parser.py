@@ -21,6 +21,7 @@ class individuals(object):
         self.divorceList=[]
         self.mother=""
         self.father=""
+        self.countID= ""
 
     def addName(self, name):
         self.name = name
@@ -52,6 +53,7 @@ class individuals(object):
         newP.divorce = person.divorce
         newP.mother=person.mother
         newP.father=person.father
+        newP.countID = person.countID
         return newP
 
 class families(object):
@@ -82,6 +84,14 @@ def findPerson(id_, listPeople):
     found = ""
     for person in listPeople:
         if person.id == id_:
+            found = person
+            break;
+    return found
+
+def findPerson2(id_, listPeople):
+    found = ""
+    for person in listPeople:
+        if person.countID == id_:
             found = person
             break;
     return found
@@ -166,6 +176,7 @@ def parse(file_):
     set_of_valid_tags = { '0' :['HEAD','NOTE','TRLR'], '1':['BIRT','CHIL','DIV','HUSB','WIFE','MARR','NAME','SEX','DEAT','FAMC','FAMS'], '2' :['DATE']}
     list_of_people = []
     list_of_fams = []
+    countP = 0
     try:
         with open(file_) as file_variable:
             birth = False
@@ -182,8 +193,10 @@ def parse(file_):
                     level, tag, argument = line_arguments
                     valid_tags = 'Y'
                     if argument == 'INDI':
+                        countP+=1
                         currentId = tag.strip('@')
                         newIndividual = individuals(currentId)
+                        newIndividual.countID = countP
                         list_of_people.append(newIndividual)
                         currentTag = 'INDI'
                     elif argument == 'FAM':
@@ -201,24 +214,28 @@ def parse(file_):
                         if currentTag == 'INDI':
                             if birth == True and tag == 'DATE':
                                 birthday = date(int(line_arguments[4]), convertMonth(line_arguments[3]), int(line_arguments[2]))
-                                p = findPerson(currentId, list_of_people)
+                                #p = findPerson(currentId, list_of_people)
+                                p = findPerson2(countP, list_of_people)
                                 p.addBirthday(birthday)
                                 age = int(line_arguments[4])
                                 p.addAge(2020-age)
                                 birth = False
                             elif death == True and tag == 'DATE':
                                 deathday = date(int(line_arguments[4]), convertMonth(line_arguments[3]), int(line_arguments[2]))
-                                p = findPerson(currentId, list_of_people)
+                                #p = findPerson(currentId, list_of_people)
+                                p = findPerson2(countP, list_of_people)
                                 p.addDeath(deathday)
                                 p.addAlive(False)
                                 death = False
                             elif tag == 'NAME':
                                 name = " ".join(line_arguments[2:])
-                                p = findPerson(currentId, list_of_people)
+                                #p = findPerson(currentId, list_of_people)
+                                p = findPerson2(countP, list_of_people)
                                 p.addName(name)
                             elif tag == 'SEX':
                                 gender = line_arguments[2]
-                                p = findPerson(currentId, list_of_people)
+                                #p = findPerson(currentId, list_of_people)
+                                p = findPerson2(countP, list_of_people)
                                 p.addGender(gender)
                             elif tag == 'BIRT':
                                 birth = True
@@ -286,3 +303,4 @@ def parse(file_):
         print("Can't open file")
     return list_of_people, list_of_fams
 
+parse('gedcomTests/main_test.ged')
