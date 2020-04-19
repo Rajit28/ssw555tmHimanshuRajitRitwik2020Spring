@@ -23,7 +23,26 @@ class TestUS20(unittest.TestCase):
             print("ERROR: FAMILIES: US20: "+ fam.id + " Marriage is with Uncle/Aunt!")
         self.assertTrue(len(errorList) == 0 , "US20: Marriages are correct and no one is married to an Aunt or Uncle!")
 
+#Author Ritvik Tiwari
+class TestUS23(unittest.TestCase):
 
+    def test_US23_individuals(self):
+        errorList = sprint4.US23()
+        for err in errorList:
+            print("ERROR: More than one individual with birthday {} and name {}".format(err[0],err[1]))
+        self.assertTrue(len(errorList) == 0 , "US23: User story Complete")
+
+#Author Ritvik Tiwari
+class TestUS24(unittest.TestCase):
+
+    def test_US24_individuals(self):
+        errorList = sprint4.US24()
+        for err in errorList:
+            print("ERROR: More than onw family with same husband name {}, wife name {} and marriage date {}".format(err[0],err[1],err[2]))
+        self.assertTrue(len(errorList) == 0 , "US24: User story complete ")
+
+
+	
 if __name__ == '__main__':
 	main_parser.outputTable('gedcomTests/main_test.ged')
 	print("")
