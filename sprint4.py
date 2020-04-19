@@ -46,6 +46,49 @@ def US20():
                     individualError.append(fam)
     return individualError
 
+#Author Rajit Gohel
+
+def US21():
+    file_ = 'gedcomTests/main_test.ged'
+    listPeople, listFam = main_parser.parse(file_)
+
+    Error=[]
+
+    for fam in listFam:
+        if fam.husbandId !='NA':
+            husb= main_parser.findPerson(fam.husbandId, listPeople)
+            if husb.gender !='M':
+                Error.append(husb)
+        if fam.wifeId !='NA':
+            wife=main_parser.findPerson(fam.wifeId, listPeople)
+            if wife.gender!='F':
+                Error.append(wife)
+    return Error
+
+#Author Rajit Gohel
+def US22():
+    file_ = 'gedcomTests/main_test.ged'
+    listPeople, listFam = main_parser.parse(file_)
+
+    IndividualIdError=[]
+    FamilyIDError=[]
+
+    dictionary={}
+    for person in listPeople:
+        if person.id in dictionary and dictionary[person.id] != person:
+            IndividualIdError.append(person.id)
+        else:
+            dictionary[person.id]= person
+    
+    dictionary=[]
+    for family in listFam:
+        if family.id in dictionary and dictionary[family.id] != family:
+            FamilyIDError.append(family.id)
+        else:
+            dictionary[family.id] = family
+    
+    return IndividualIdError,FamilyIDError
+
 
 #Author Ritvik Tiwari
 def US23():
